@@ -1,0 +1,18 @@
+.FormContainer{
+
+}
+
+.FormStretchField{
+    background-color: #D7CEB2;
+    width: 60%;
+}
+
+.ButtonForm{
+    background-color: var(--light-bg);
+    width: 50%;
+}
+
+.textFieldLabel{
+    color: white;
+}
+
