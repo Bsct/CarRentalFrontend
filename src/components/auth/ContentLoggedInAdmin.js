@@ -1,18 +1,18 @@
 import classes from "../../App.module.css";
 import {Route, Switch} from "react-router-dom";
-import AppHeaderLoggedIn from "../content/AppHeaderLoggedIn";
-import AppContentHome from "../content/AppContentHome";
-import CarList from "../content/cars/CarList";
-import React from "react";
-import Logout from "./Logout";
 import ReservationForm from "../content/reservation/ReservationForm";
-import ReservationList from "../content/reservation/ReservationList";
 import CarForm from "../content/cars/CarForm";
+import ReservationList from "../content/reservation/ReservationList";
+import CarList from "../content/cars/CarList";
+import Logout from "./Logout";
+import AppContentHome from "../content/AppContentHome";
+import React from "react";
+import AppHeaderLoggedInAdmin from "../content/AppHeaderLoggedInAdmin";
 
-const ContentLoggedIn = () => {
+const ContentLoggedInAdmin = () => {
     return (
         <>
-            <AppHeaderLoggedIn/>
+            <AppHeaderLoggedInAdmin/>
             <div className={classes.AppContent}>
                 <Switch>
                     <Route path={'/reservation/add/:carId'}>
@@ -39,4 +39,4 @@ const ContentLoggedIn = () => {
     )
 }
 
-export default ContentLoggedIn;
+export default ContentLoggedInAdmin;

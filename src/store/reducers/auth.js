@@ -39,6 +39,7 @@ const authSuccess = (state, action) => {
         username: action.username,
         id: action.id,
         admin: action.admin,
+        roles: action.roles,
         error: null,
         loading: false
     });

@@ -7,6 +7,7 @@ import {updateObject} from '../shared/utility';
 
 import * as actions from '../../store/actions/index';
 import classes from './Auth.module.css'
+import jwt_decode from "jwt-decode";
 
 class Auth extends Component {
     state = {
@@ -89,6 +90,11 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => {
+    if(state.auth.token){
+        let jwtDecode = jwt_decode(state.auth.token);
+        console.log("dupa",jwtDecode);
+
+    }
     return {
         loading: state.auth.loading,
         error: state.auth.error,

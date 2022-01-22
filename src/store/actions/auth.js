@@ -1,5 +1,6 @@
 import instance from '../../axios/axios';
 import * as actionTypes from './actionTypes';
+import jwt_decode from "jwt-decode";
 
 const authStart = () => {
     return {
@@ -21,6 +22,9 @@ export const auth = (username, password) => {
                 localStorage.setItem('token', response.headers.authorization);
                 localStorage.setItem('expirationDate', response.headers.expiresAt);
                 localStorage.setItem('username', username);
+                let roles = jwt_decode(response.headers.authorization).roles;
+                localStorage.setItem('roles', roles);
+
 
                 instance.get("/user")
                     .then(response => {
@@ -28,13 +32,13 @@ export const auth = (username, password) => {
                         localStorage.setItem('id', response.data.id);
                         localStorage.setItem('username', response.data.username);
                         localStorage.setItem('admin', response.data.admin);
-                        dispatch(authSuccess(response.headers.authorization, username, response.data.id, response.data.admin));
+                        dispatch(authSuccess(response.headers.authorization, username, response.data.id, response.data.admin,roles));
                     })
                     .catch(err => {
                         console.log('Retrieving rest of user data ERROR!')
                     })
 
-                dispatch(authSuccess(response.headers.authorization, username, null, null));
+                dispatch(authSuccess(response.headers.authorization, username, null, null, roles));
             })
             .catch(err => {
                 console.log('Error: ')
@@ -45,13 +49,14 @@ export const auth = (username, password) => {
     }
 }
 
-const authSuccess = (token, username, id, admin) => {
+const authSuccess = (token, username, id, admin, roles) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token,
         username: username,
         id: id,
-        admin: admin
+        admin: admin,
+        roles: roles
     }
 }
 
