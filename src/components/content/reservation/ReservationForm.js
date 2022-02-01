@@ -23,9 +23,9 @@ const EMPTY_NEW_RESERVATION = {
     'rentDateTo': getDateString(new Date()),
     'price': null,
     'car': null,
-    'employeeReturn': null,
-    'employeePickup': null,
-    'client': null,
+    'user': null,
+    'rentPickup': null,
+    'rentReturn': null,
 }
 
 

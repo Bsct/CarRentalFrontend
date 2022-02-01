@@ -11,12 +11,12 @@ const HEADER_BUTTONS = [
         icon: (<AiOutlineHome size={30}/>),
     },
     {
-        name: "Rental Offers",
+        name: "Car List",
         href: "/cars",
         icon: <AiOutlineCar size={30}/>,
     },
     {
-        name: "Reservations",
+        name: "Reservation List",
         href: "/reservations",
         icon: (<AiOutlineDatabase size={30} />),
     },
@@ -49,7 +49,7 @@ const AppHeaderLoggedInAdmin = (props) => {
                     HEADER_BUTTONS.map(mapButtonToHeader)
                 }
                 <div className={classes.UsernameHeaderDiv}>
-                    Logged in as: {props.authenticatedUsername} [{props.authenticatedUserId}] [{props.authenticatedUserAdmin?'A':'U'}]
+                    Logged in as: {props.authenticatedUsername} [{props.authenticatedUserId}] [A]
                 </div>
             </div>
         </header>
@@ -59,7 +59,6 @@ const AppHeaderLoggedInAdmin = (props) => {
 const mapStateToProps = state => {
         return {
             authenticatedUsername: state.auth.username,
-            authenticatedUserAdmin: state.auth.admin,
             authenticatedUserRoles: state.auth.roles,
             authenticatedUserId: state.auth.id
         };

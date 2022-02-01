@@ -8,6 +8,7 @@ import Logout from "./Logout";
 import AppContentHome from "../content/AppContentHome";
 import React from "react";
 import AppHeaderLoggedInAdmin from "../content/AppHeaderLoggedInAdmin";
+import CarListAdmin from "../content/cars/CarListAdmin";
 
 const ContentLoggedInAdmin = () => {
     return (
@@ -18,14 +19,14 @@ const ContentLoggedInAdmin = () => {
                     <Route path={'/reservation/add/:carId'}>
                         <ReservationForm/>
                     </Route>
-                    <Route path={'/car/add'}>
-                        <CarForm/>
-                    </Route>
                     <Route path={'/reservations'}>
                         <ReservationList/>
                     </Route>
+                    <Route path={'/cars/add'}>
+                        <CarForm/>
+                    </Route>
                     <Route path={'/cars'}>
-                        <CarList/>
+                        <CarListAdmin/>
                     </Route>
                     <Route path={'/logout'}>
                         <Logout/>

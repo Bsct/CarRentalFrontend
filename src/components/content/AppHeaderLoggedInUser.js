@@ -43,7 +43,7 @@ const AppHeaderLoggedInUser = (props) => {
                     HEADER_BUTTONS.map(mapButtonToHeader)
                 }
                 <div className={classes.UsernameHeaderDiv}>
-                    Logged in as: {props.authenticatedUsername} [{props.authenticatedUserId}] [{props.authenticatedUserAdmin?'A':'U'}]
+                    Logged in as: {props.authenticatedUsername} [{props.authenticatedUserId}] [U]
                 </div>
             </div>
         </header>
@@ -53,7 +53,6 @@ const AppHeaderLoggedInUser = (props) => {
 const mapStateToProps = state => {
         return {
             authenticatedUsername: state.auth.username,
-            authenticatedUserAdmin: state.auth.admin,
             authenticatedUserRoles: state.auth.roles,
             authenticatedUserId: state.auth.id
         };

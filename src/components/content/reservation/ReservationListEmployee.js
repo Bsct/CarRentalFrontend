@@ -5,8 +5,8 @@ import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, T
 import {Link} from "react-router-dom";
 import instance from "../../../axios/axios";
 
-const ReservationList = () => {
-    const[reservation, setReservation] = useState([]);
+const ReservationListEmployee = () => {
+    const [reservation, setReservation] = useState([]);
 
     const pullReservationsFromDatabase = () => {
         instance.get("/reservations")
@@ -15,7 +15,7 @@ const ReservationList = () => {
                 console.log("Pulled records: " + JSON.stringify(data.data));
                 setReservation(data.data);
             })
-            .catch((error) =>{
+            .catch((error) => {
                 console.log("(Response) error: " + JSON.stringify(error))
             })
     }
@@ -42,7 +42,6 @@ const ReservationList = () => {
                                     <TableCell align={"right"}>Car picked up on</TableCell>
                                     <TableCell align={"right"}>Car returned on</TableCell>
                                     <TableCell align={"right"}>Price</TableCell>
-                                    <TableCell align={"right"}>Additional fees</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -61,7 +60,10 @@ const ReservationList = () => {
                                         <TableCell align={"right"}>
                                             {(() => {
                                                 if (row.rentPickup === null) {
-                                                    return ("Not picked up yet")
+                                                    return (
+                                                        <Link to={`reservations/${row.id}/pickup`}>
+                                                            <Button variant={"contained"}>File car pickup</Button>
+                                                        </Link>)
                                                 } else {
                                                     return row.rentPickup.rentPickupDate
                                                 }
@@ -70,23 +72,25 @@ const ReservationList = () => {
                                         <TableCell align={"right"}>
                                             {(() => {
                                                 if (row.rentReturn === null) {
-                                                    return ("Not returned yet")
+                                                    return (
+                                                        <Link to={`reservations/${row.id}/return`}>
+                                                            <Button variant={"contained"}>File car return</Button>
+                                                        </Link>)
                                                 } else {
                                                     return row.rentReturn.rentReturnDate
                                                 }
                                             })()}
                                         </TableCell>
                                         <TableCell align={"right"}>{row.price} $</TableCell>
-                                        <TableCell align={"right"}>{row.rentReturn.surchargeFee} $</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    </div>
+                </div>
             </CardComponent>
         </div>
     )
 }
 
-export default ReservationList;
+export default ReservationListEmployee;

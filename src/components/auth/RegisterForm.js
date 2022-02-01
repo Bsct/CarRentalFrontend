@@ -8,7 +8,9 @@ import {useHistory} from "react-router-dom";
 const EMPTY_NEW_USER = {
     'username': '',
     'password': '',
-    'admin': false
+    'name': '',
+    'surname': '',
+    'type': ''
 }
 
 const RegisterForm = () => {
@@ -20,20 +22,20 @@ const RegisterForm = () => {
     };
 
     const handleClearForm = () => {
-        setRegisteredUser({...EMPTY_NEW_USER})
+        setRegisteredUser({...EMPTY_NEW_USER});
     }
 
     const handleSubmit = () => {
-        console.log("Wysyłamy:" + JSON.stringify(registeredUser))
+        console.log("Sending:" + JSON.stringify(registeredUser))
 
         instance.post('/user/register', registeredUser)
             .then((data)=>{
-                console.log("Odpowiedź sukces: "+ JSON.stringify(data));
+                console.log("(Response) register submit success: "+ JSON.stringify(data));
 
                 history.push("/auth");
             })
             .catch((err) => {
-                console.log("Odpowiedź failed: "+ JSON.stringify(err));
+                console.log("(Response) register submit failed: "+ JSON.stringify(err));
             })
     }
 
@@ -55,13 +57,25 @@ const RegisterForm = () => {
                                    label={'Password'} size={'small'} variant="filled"/>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField value={registeredUser.admin}
-                                   onChange={handleChangeForm("admin")}
+                        <TextField value={registeredUser.name}
+                                   onChange={handleChangeForm("name")}
+                                   className={classes.FormStretchField}
+                                   label={'Name'} size={'small'} variant="filled"/>
+                    </Grid><Grid item xs={12}>
+                    <TextField value={registeredUser.surname}
+                               onChange={handleChangeForm("surname")}
+                               className={classes.FormStretchField}
+                               label={'Surname'} size={'small'} variant="filled"/>
+                </Grid>
+                    <Grid item xs={12}>
+                        <TextField value={registeredUser.type}
+                                   onChange={handleChangeForm("type")}
                                    className={classes.FormStretchField}
                                    select
-                                   label='User/Admin' size={'small'} variant="filled">
-                            <MenuItem value={true}>Administrator</MenuItem>
-                            <MenuItem value={false}>Basic User</MenuItem>
+                                   label='Account type' size={'small'} variant="filled">
+                            <MenuItem value={'admin'}>Administrator</MenuItem>
+                            <MenuItem value={'user'}>Basic User</MenuItem>
+                            <MenuItem value={'employee'}>Employee</MenuItem>
                         </TextField>
                     </Grid>
                     <Grid item xs={2}/>

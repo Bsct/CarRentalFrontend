@@ -85,21 +85,21 @@ const CarForm = () => {
                                    className={classes.FormStretchField}
                                    label={"Price"} size={"small"} variant={"filled"}/>
                     </Grid>
-                    <Grid container item xs={12}>
-                        <Grid item xs={2}/>
-                        <Grid item xs={4}>
-                            <Button className={classes.FormStretchField}
+                    <Grid item xs={2}/>
+                    <Grid container item xs={10}>
+                        <Grid item xs={5}>
+                            <Button className={classes.ButtonForm}
                                     size={"small"} variant={"contained"}
                                     onClick={handleClearCarForm}>
                                 Clear
                             </Button>
-                            <Grid item xs={4}>
-                                <Button className={classes.FormStretchField}
-                                        size={"small"} variant={"contained"}
-                                        onClick={handleSubmit}>
-                                    Add
-                                </Button>
-                            </Grid>
+                        </Grid>
+                        <Grid item xs={5}>
+                            <Button className={classes.ButtonForm}
+                                    size={"small"} variant={"contained"}
+                                    onClick={handleSubmit}>
+                                Add
+                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>

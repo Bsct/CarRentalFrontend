@@ -3,8 +3,8 @@ import CardComponent from "../CardComponent";
 const AppContentHome = () => {
     return (
         <div>
-            <CardComponent title={'Home'}>
-                Home text that I want to display
+            <CardComponent title={'Car Rental Application'}>
+                Homepage to be announced
             </CardComponent>
         </div>
     )

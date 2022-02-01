@@ -28,7 +28,7 @@ const CarList = () => {
         <div>
             <CardComponent title={"Car List"}>
                 <div className={classes.CarTableContainer}>
-                    <TableContainer component={Paper}>
+                    <TableContainer className={classes.TableContainer} component={Paper}>
                         <Table className={classes.Table} sx={{minWidth: 650}} aria-level={"simple table"}>
                             <TableHead>
                                 <TableRow>
@@ -55,15 +55,13 @@ const CarList = () => {
                                         <TableCell align={"right"}>{row.engineSize}ccm</TableCell>
                                         <TableCell align={"right"}>{row.color}</TableCell>
                                         <TableCell align={"right"}>{row.price}$ per day</TableCell>
-                                        <TableCell align={"right"}>
-                                            <Link to={`reservation/add/${row.id}`}>
-                                                <Button variant={"contained"}>Rent</Button>
-                                            </Link>
-                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
+                        <Link to={"cars/add"}>
+                            <Button variant={"contained"}>Add new car</Button>
+                        </Link>
                     </TableContainer>
                 </div>
             </CardComponent>
