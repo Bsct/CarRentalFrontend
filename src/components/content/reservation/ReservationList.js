@@ -77,7 +77,15 @@ const ReservationList = () => {
                                             })()}
                                         </TableCell>
                                         <TableCell align={"right"}>{row.price} $</TableCell>
-                                        <TableCell align={"right"}>{row.rentReturn.surchargeFee} $</TableCell>
+                                        <TableCell align={"right"}>
+                                            {(() => {
+                                                if (row.rentReturn === null) {
+                                                    return ("Not returned yet")
+                                                } else {
+                                                    return (row.rentReturn.surchargeFee + "$");
+                                                }
+                                            })()}
+                                            </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

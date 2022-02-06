@@ -12,6 +12,10 @@ a.CarDetailsButton {
     border:black;
 }
 
+.Button{
+    width: 35%;
+}
+
 .TableContainer{
     background-color: #D7CEB2;
 }

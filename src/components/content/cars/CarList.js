@@ -51,7 +51,7 @@ const CarList = () => {
                                         </TableCell>
                                         <TableCell align={"right"}>{row.manufacturer}</TableCell>
                                         <TableCell align={"right"}>{row.model}</TableCell>
-                                        <TableCell align={"right"}>{row.productionYear}</TableCell>
+                                        <TableCell align={"right"}>{row.year}</TableCell>
                                         <TableCell align={"right"}>{row.engineSize}ccm</TableCell>
                                         <TableCell align={"right"}>{row.color}</TableCell>
                                         <TableCell align={"right"}>{row.price}$ per day</TableCell>

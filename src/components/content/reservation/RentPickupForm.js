@@ -16,6 +16,7 @@ const getDateString = (dateObject) => {
 const EMPTY_RENT_PICKUP = {
     'rentPickupDate': getDateString(new Date()),
     'clientFeedback': '',
+
 }
 
 const RentPickupForm = () => {

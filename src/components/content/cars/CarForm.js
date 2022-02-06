@@ -10,7 +10,7 @@ const EMPTY_NEW_CAR = {
     'id': null,
     'manufacturer': null,
     'model': null,
-    'productionYear': null,
+    'year': null,
     'engineSize': null,
     'color': null,
     'price': null,
@@ -59,8 +59,8 @@ const CarForm = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField InputLabelProps={{className: classes.textFieldLabel}}
-                                   value={editedCar.productionYear}
-                                   onChange={handleChangeCarForm("productionYear")}
+                                   value={editedCar.year}
+                                   onChange={handleChangeCarForm("year")}
                                    className={classes.FormStretchField}
                                    label={"Production Year"} size={"small"} variant={"filled"}/>
                     </Grid>
